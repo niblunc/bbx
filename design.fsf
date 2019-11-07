@@ -33,7 +33,7 @@ set fmri(sscleanup_yn) 0
 set fmri(outputdir) OUTDIR
 
 # TR(s)
-set fmri(tr) 2.000000
+set fmri(tr) TR
 
 # Total volumes
 set fmri(npts) VOL
@@ -313,7 +313,7 @@ set fmri(tempfilt_yn1) 1
 set fmri(deriv_yn1) 1
 
 # Custom EV file (EV 1)
-set fmri(custom1) SSBcue
+set fmri(custom1) SSBcue_file
 
 # Orthogonalise EV 1 wrt EV 0
 set fmri(ortho1.0) 0
@@ -386,7 +386,7 @@ set fmri(tempfilt_yn2) 1
 set fmri(deriv_yn2) 1
 
 # Custom EV file (EV 2)
-set fmri(custom2) USBcue
+set fmri(custom2) USBcue_file
 
 # Orthogonalise EV 2 wrt EV 0
 set fmri(ortho2.0) 0
@@ -532,7 +532,7 @@ set fmri(tempfilt_yn4) 1
 set fmri(deriv_yn4) 1
 
 # Custom EV file (EV 4)
-set fmri(custom4) SSBtaste
+set fmri(custom4) SSBtaste_file
 
 # Orthogonalise EV 4 wrt EV 0
 set fmri(ortho4.0) 0
@@ -605,7 +605,7 @@ set fmri(tempfilt_yn5) 1
 set fmri(deriv_yn5) 1
 
 # Custom EV file (EV 5)
-set fmri(custom5) USBtaste
+set fmri(custom5) USBtaste_file
 
 # Orthogonalise EV 5 wrt EV 0
 set fmri(ortho5.0) 0
@@ -678,7 +678,7 @@ set fmri(tempfilt_yn6) 1
 set fmri(deriv_yn6) 1
 
 # Custom EV file (EV 6)
-set fmri(custom6) H2Otaste
+set fmri(custom6) H2Otaste_file
 
 # Orthogonalise EV 6 wrt EV 0
 set fmri(ortho6.0) 0
@@ -751,7 +751,7 @@ set fmri(tempfilt_yn7) 1
 set fmri(deriv_yn7) 1
 
 # Custom EV file (EV 7)
-set fmri(custom7) rinse
+set fmri(custom7) rinse_file
 
 # Gamma sigma (EV 7)
 set fmri(gammasigma7) 3
@@ -830,7 +830,7 @@ set fmri(tempfilt_yn8) 1
 set fmri(deriv_yn8) 1
 
 # Custom EV file (EV 8)
-set fmri(custom8) moco0
+set fmri(custom8) moco0_file
 
 # Orthogonalise EV 8 wrt EV 0
 set fmri(ortho8.0) 0
@@ -872,7 +872,7 @@ set fmri(ortho8.11) 0
 set fmri(ortho8.12) 0
 
 # EV 9 title
-set fmri(evtitle9) "moco2"
+set fmri(evtitle9) "moco1"
 
 # Basic waveform shape (EV 9)
 # 0 : Square
@@ -903,7 +903,7 @@ set fmri(tempfilt_yn9) 1
 set fmri(deriv_yn9) 1
 
 # Custom EV file (EV 9)
-set fmri(custom9) moco1
+set fmri(custom9) moco1_file
 
 # Orthogonalise EV 9 wrt EV 0
 set fmri(ortho9.0) 0
@@ -945,7 +945,7 @@ set fmri(ortho9.11) 0
 set fmri(ortho9.12) 0
 
 # EV 10 title
-set fmri(evtitle10) "moco3"
+set fmri(evtitle10) "moco2"
 
 # Basic waveform shape (EV 10)
 # 0 : Square
@@ -976,7 +976,7 @@ set fmri(tempfilt_yn10) 1
 set fmri(deriv_yn10) 1
 
 # Custom EV file (EV 10)
-set fmri(custom10) moco3
+set fmri(custom10) moco2_file
 
 # Orthogonalise EV 10 wrt EV 0
 set fmri(ortho10.0) 0
@@ -1018,7 +1018,7 @@ set fmri(ortho10.11) 0
 set fmri(ortho10.12) 0
 
 # EV 11 title
-set fmri(evtitle11) "moco4"
+set fmri(evtitle11) "moco3"
 
 # Basic waveform shape (EV 11)
 # 0 : Square
@@ -1049,7 +1049,7 @@ set fmri(tempfilt_yn11) 1
 set fmri(deriv_yn11) 1
 
 # Custom EV file (EV 11)
-set fmri(custom11) moco4
+set fmri(custom11) moco3_file
 
 # Orthogonalise EV 11 wrt EV 0
 set fmri(ortho11.0) 0
@@ -1091,7 +1091,7 @@ set fmri(ortho11.11) 0
 set fmri(ortho11.12) 0
 
 # EV 12 title
-set fmri(evtitle12) "moco5"
+set fmri(evtitle12) "moco4"
 
 # Basic waveform shape (EV 12)
 # 0 : Square
@@ -1122,7 +1122,7 @@ set fmri(tempfilt_yn12) 1
 set fmri(deriv_yn12) 1
 
 # Custom EV file (EV 12)
-set fmri(custom12) moco5
+set fmri(custom12) moco4_file
 
 # Orthogonalise EV 12 wrt EV 0
 set fmri(ortho12.0) 0

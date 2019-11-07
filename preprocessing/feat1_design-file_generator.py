@@ -6,23 +6,61 @@ import re
 
 
 def make_file(sub,main_dict):
-    for sub in main_dict:
-        for key1 in main_dict[sub]:
+
+    if args.SESS == False and args.ALL_SESS == False: # or task == ('resting' || 'rest')
+        # case - no sessions
+        pass
+
+    elif args.ALL_SESS == True:
+        # case - grab all available sessions
+        pass
+
+    else:
+        # case - grab only specified sessions
+
+        # loop through sessions
+        for sess_id in args.SESS:
+
+
+            if arglist["RUN"] == False:
+                # case - no runs, only task (i.e. resting)
+                pass
+
+            else:
+                # case - session, runs available
+                for run in main_dict[sub]:
+                    #print(run)
+
+                    with open(args.FSF_FILE, 'r') as infile:
+                        print("Opening template file {}".format(args.FSF_FILE))
+                        tempfsf = infile.read()
+
+                        #  fill in tempfsf file with parameters
+                        tempfsf = tempfsf.replace("OUTPUT", main_dict[sub][run]["OUTPUT"])
+                        tempfsf = tempfsf.replace("FUNCRUN", main_dict[sub][run]["FUNC"])
+                        tempfsf = tempfsf.replace("TR", main_dict[sub][run]['TR'])
+                        tempfsf = tempfsf.replace("CONFOUND", main_dict[sub][run]['CONFOUND'])
+                        tempfsf = tempfsf.replace("VOL", main_dict[sub][run]['VOL'])
+
+                        # loop through keys in dict to find EVs and MOCOs
+                        for key in main_dict[sub][run]:
+
+
+                            # Fill in EVS
+                            if re.match(r'EV', key):
+                                ev_name = key.split("_")[1]
+                                ev = main_dict[sub][run][key]
+                                tempfsf = tempfsf.replace(ev_name, ev)
+                                #print(ev_name, "\n", ev)
+
+                            if re.match(r'MOCO', key):
+                                print(key)
+                        print(tempfsf)
 
     """for run in arglist["RUN"]:
         with open(args.FSF_FILE, 'r') as infile:
             tempfsf = infile.read()
 
-            num = int(run)
-            out = main_dict[key][run]["OUTPUT"]
-            func = main_dict[key][run]["FUNCRUN%i" % num]
-            time = main_dict[key][run]["NTIMEPOINT%i" % num]
-            con = main_dict[key][run]["CONFOUND%i" % num]
-
-            tempfsf = tempfsf.replace("OUTPUT", out)
-            tempfsf = tempfsf.replace("FUNCRUN", func)  # 4D AVW DATA
-            tempfsf = tempfsf.replace("NTPTS", time)
-            tempfsf = tempfsf.replace("CONFOUND", con)
 
             for key2 in main_dict[key][run]:
                 if re.match(r'EV[0-9]TITLE', key2):
@@ -57,7 +95,7 @@ def fill_dict(sub, main_dict):
     sub_path = os.path.join(deriv_path, sub)
     #print("SUBJECT: %s \t TASK: %s \nPATH: %s"% (sub, task, sub_path))
 
-    if args.SESS == False and args.ALL_SESS == False:
+    if args.SESS == False and args.ALL_SESS == False: # or task == ('resting' || 'rest')
         # no sessions
         pass
 
@@ -95,12 +133,19 @@ def fill_dict(sub, main_dict):
                         main_dict[sub][run]['OUTPUT'] = output_path
 
                         scan = func.split(".")[0]
-                        main_dict[sub][run]['FUNCRUN%i' % x] = scan
-                        ntmpts = check_output(['fslnvols', scan])
-                        ntmpts = ntmpts.decode('utf-8')
-                        ntmpts = ntmpts.strip('\n')
-                        main_dict[sub][run]['NTIMEPOINT%i' % x] = ntmpts
+                        main_dict[sub][run]['FUNC'] = scan
+                        vol = check_output(['fslnvols', scan])
+                        vol = vol.decode('utf-8')
+                        vol = vol.strip('\n')
+                        main_dict[sub][run]['VOL'] = vol
                         main_dict[sub][run]['CONFOUND'] = confound
+
+                        # -- TRS FROM NIFTI -- this value will always be 2, therefore we only run the check once
+                        trs = check_output(['fslval', '%s' % (scan), 'pixdim4', scan])
+                        trs = trs.decode('utf-8')
+                        trs = trs.strip('\n')
+                        # print("TRs: ", trs)
+                        main_dict[sub][run]['TR'] = trs
 
                         for i in range(6):
                             motcor = os.path.join(sub_path, 'func', 'motion_assessment', 'motion_parameters',
@@ -110,22 +155,17 @@ def fill_dict(sub, main_dict):
                         # -- EVS -- here we loop through the given EVs and add the corresponding file to the dictionary
 
                         ctr = 0
-                        for item in arglist['EV']:
+                        for ev_name in arglist['EV']:
                             # print(item)
                             ctr = ctr + 1
-                            # main_dict[sub][run]['EV%iTITLE' % ctr] = item
+
                             ev = os.path.join(sub_path, 'func', 'onsets',
-                                                  '%s_task-%s_run-%s.txt' % (sub, item, run))
+                                                  '%s_task-%s_run-%s.txt' % (sub, ev_name, run))
                             #print(ev)
                             # print("EV: ", ev)
-                            main_dict[sub][run]['EV%i' % ctr] = ev
+                            main_dict[sub][run]['EV_%s' % ev_name] = ev
 
-                    # -- TRS FROM NIFTI -- this value will always be 2, therefore we only run the check once
-                    trs = check_output(['fslval', '%s' % (scan), 'pixdim4', scan])
-                    trs = trs.decode('utf-8')
-                    trs = trs.strip('\n')
-                    #print("TRs: ", trs)
-                    main_dict[sub][run]['TR'] = trs
+
 
 
 
@@ -174,6 +214,8 @@ if __name__ == "__main__":
                         default=False, help='which run are we using?')
     parser.add_argument('-deriv_dir ', dest='DERIVDIR',
                         default=False, help='please enter your derivatives directory')
+    parser.add_argument('-fsf ', dest='FSF_FILE',
+                        default=False, help='please enter your FSF file path')
     args = parser.parse_args()
     arglist = {}
     for a in args._get_kwargs():
