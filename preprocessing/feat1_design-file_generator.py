@@ -30,6 +30,8 @@ def make_file(sub,main_dict):
                 # case - session, runs available
                 for run in main_dict[sub]:
                     outpath = os.path.join(args.DERIVDIR, sub, 'func', 'Analysis', "feat1")
+                    if not os.path.exists(outpath):
+                        os.makedirs(outpath)
 
                     #print(run)
 
@@ -60,8 +62,8 @@ def make_file(sub,main_dict):
                                 moco_file = main_dict[sub][run][key]
                                 tempfsf = tempfsf.replace(key+"_file", moco_file)
                                 #print(moco_file)
-                        fsf_outfile = '%s_%s_task-%s_run-%s.fsf' % (sub, sess_id, args.TASK, run)
-                        with open(fsf_outfile, 'w') as outfile: #os.path.join(outpath,
+                        fsf_outfile = '%s_ses-%s_task-%s_run-%s.fsf' % (sub, sess_id, args.TASK, run)
+                        with open(os.path.join(outpath, fsf_outfile), 'w') as outfile: #os.path.join(outpath,
                             outfile.write(tempfsf)
                         outfile.close()
                     infile.close()
