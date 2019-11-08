@@ -6,7 +6,7 @@ import re
 
 
 def make_file(sub,main_dict):
-
+    print("making file for subject ", sub)
     if args.SESS == False and args.ALL_SESS == False: # or task == ('resting' || 'rest')
         # case - no sessions
         pass
@@ -29,6 +29,8 @@ def make_file(sub,main_dict):
             else:
                 # case - session, runs available
                 for run in main_dict[sub]:
+                    outpath = os.path.join(args.DERIVDIR, sub, 'func', 'Analysis', "feat1")
+
                     #print(run)
 
                     with open(args.FSF_FILE, 'r') as infile:
@@ -36,11 +38,12 @@ def make_file(sub,main_dict):
                         tempfsf = infile.read()
 
                         #  fill in tempfsf file with parameters
-                        tempfsf = tempfsf.replace("OUTPUT", main_dict[sub][run]["OUTPUT"])
-                        tempfsf = tempfsf.replace("FUNCRUN", main_dict[sub][run]["FUNC"])
+                        tempfsf = tempfsf.replace("OUTDIR", main_dict[sub][run]["OUTPUT"])
+                        tempfsf = tempfsf.replace("FUNCTIONAL", main_dict[sub][run]["FUNC"])
                         tempfsf = tempfsf.replace("TR", main_dict[sub][run]['TR'])
                         tempfsf = tempfsf.replace("CONFOUND", main_dict[sub][run]['CONFOUND'])
                         tempfsf = tempfsf.replace("VOL", main_dict[sub][run]['VOL'])
+
 
                         # loop through keys in dict to find EVs and MOCOs
                         for key in main_dict[sub][run]:
@@ -50,12 +53,19 @@ def make_file(sub,main_dict):
                             if re.match(r'EV', key):
                                 ev_name = key.split("_")[1]
                                 ev = main_dict[sub][run][key]
-                                tempfsf = tempfsf.replace(ev_name, ev)
+                                tempfsf = tempfsf.replace(ev_name+"_file", ev)
                                 #print(ev_name, "\n", ev)
 
-                            if re.match(r'MOCO', key):
-                                print(key)
-                        print(tempfsf)
+                            if re.match(r'moco', key):
+                                moco_file = main_dict[sub][run][key]
+                                tempfsf = tempfsf.replace(key+"_file", moco_file)
+                                #print(moco_file)
+                        fsf_outfile = '%s_%s_task-%s_run-%s.fsf' % (sub, sess_id, args.TASK, run)
+                        with open(fsf_outfile, 'w') as outfile: #os.path.join(outpath,
+                            outfile.write(tempfsf)
+                        outfile.close()
+                    infile.close()
+
 
     """for run in arglist["RUN"]:
         with open(args.FSF_FILE, 'r') as infile:
@@ -150,7 +160,7 @@ def fill_dict(sub, main_dict):
                         for i in range(6):
                             motcor = os.path.join(sub_path, 'func', 'motion_assessment', 'motion_parameters',
                                               '%s_ses-%s_task-%s_run-%s_moco%s.txt' % (sub, sess_id, task, run, i))
-                            main_dict[sub][run]['MOCO%i' % i] = motcor
+                            main_dict[sub][run]['moco%i' % i] = motcor
 
                         # -- EVS -- here we loop through the given EVs and add the corresponding file to the dictionary
 
