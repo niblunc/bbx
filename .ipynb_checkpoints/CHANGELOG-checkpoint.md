@@ -19,7 +19,7 @@ Volume Errors:
 
 - sub-044:  
     - File:sub-044_ses-2_task-resting_bold.nii.gz  		Volume:122  
-    *replacement unavailable*  
+    *replacement unavailables*  
 
 - sub-048:  
   - File:sub-048_ses-1_task-training_run-1_bold.nii.gz  		Volume:28  
@@ -70,8 +70,3 @@ Volume Errors:
 - bids formatted subjects added to `bids/` directory
   * Session 1: 87 subjects  
   * Session 2: 66 subjects  
-
-### Changed
-
-
-### Errors
