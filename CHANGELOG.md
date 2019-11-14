@@ -58,7 +58,7 @@ Volume Errors:
   *replacement run was available, subject now has 3 runs*
 
 - sub-159:  
-  - File:sub-159_ses-1_task-resting_bold.nii.gz  		Volume:68
+  - File:sub-159_ses-1_task-resting_bold.nii.gz  		Volume:68  
   *replacement file not available* 
 
 
