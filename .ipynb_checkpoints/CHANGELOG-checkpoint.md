@@ -44,17 +44,17 @@ Volume Errors:
   - File:sub-128_ses-1_task-training_run-1_bold.nii.gz  		Volume:154
   - File:sub-128_ses-1_task-training_run-2_bold.nii.gz  		Volume:131
   - File:sub-128_ses-1_task-training_run-3_bold.nii.gz  		Volume:131
-  - File:sub-128_ses-1_task-training_run-4_bold.nii.gz  		Volume:147
+  - File:sub-128_ses-1_task-training_run-4_bold.nii.gz  		Volume:147  
   *no replacement files available, will probably have to remove subject*  
 
 - sub-146:  
   - File:sub-146_ses-1_task-training_run-1_bold.nii.gz  		Volume:76
-  - File:sub-146_ses-2_task-training_run-4_bold.nii.gz  		Volume:19
+  - File:sub-146_ses-2_task-training_run-4_bold.nii.gz  		Volume:19  
   *replacement file was available, subject has 3 runs*  
 
 - sub-147:  
   - File:sub-147_ses-1_task-training_run-3_bold.nii.gz  		Volume:92  
-  - File:sub-147_ses-1_task-training_run-4_bold.nii.gz  		Volume:123  
+  - File:sub-147_ses-1_task-training_run-4_bold.nii.gz  		Volume:123   
   *replacement run was available, subject now has 3 runs*
 
 - sub-159:  
