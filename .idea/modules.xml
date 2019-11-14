@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/bbx.iml" filepath="$PROJECT_DIR$/.idea/bbx.iml" />
       <module fileurl="file://$PROJECT_DIR$/../bro/.idea/bro.iml" filepath="$PROJECT_DIR$/../bro/.idea/bro.iml" />
+      <module fileurl="file://$USER_HOME$/PycharmProjects/tensorflow-tutorial_01/.idea/tensorflow-tutorial_01.iml" filepath="$USER_HOME$/PycharmProjects/tensorflow-tutorial_01/.idea/tensorflow-tutorial_01.iml" />
     </modules>
   </component>
 </project>

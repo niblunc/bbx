@@ -6,10 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+* available BIDS format subject count
+    - session 1: 142
+    - session 2: 80
 ### Added
+
+* ran fmriprep for available subjects
+* ran conversion to bids for all available subjects
+* added 55 subject dicoms onto RENCI for session 1
+* added 14 subject dicoms onto RENCI for session 2
 
 
 ### Errors
+- sub-060 only does not have a resting image
+
 Volume Errors:
 - sub-002:  
     - File:sub-002_ses-1_task-training_run-1_bold.nii.gz  		Volume:10  
