@@ -18,6 +18,6 @@ else
 fi
 
 singularity exec -B /:/base_dir /projects/niblab/bids_projects/Singularity_Containers/heudiconv_05_2019.simg \
-heudiconv -b -d /base_dir/projects/niblab/bids_projects/Experiments/bbx/bids/sourcedata/DICOM/ses-{session}/sub-{subject}/*dcm -s $id -ss $1 \
--f /base_dir/projects/niblab/bids_projects/Experiments/bbx/bids/code/bbx_heuristic.py \
--c dcm2niix -o /base_dir/projects/niblab/bids_projects/Experiments/bbx/bids
+heudiconv -b -d /test/projects/niblab/bids_projects/Experiments/bbx/bids/sourcedata/DICOM/ses-{session}/sub-{subject}/*dcm -s 128 -ss 1 \
+-f /test/projects/niblab/bids_projects/Experiments/bbx/bids/code/bbx_heuristic.py \
+-c dcm2niix -o /test/projects/niblab/bids_projects/Experiments/bbx/unique_bids

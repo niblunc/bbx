@@ -15,9 +15,6 @@ import numpy as np
 # setup available paths
 bids_path = '/projects/niblab/bids_projects/Experiments/bbx/bids/'
 
-# get expected range
-range_val = 159 #input("Expected subject range: ")
-expected_sub_lst=list(range(1,int(range_val))) # Expecting subject IDs 1-56
 
 # get scan notes
 df_w1_notes=pd.read_csv('w1_notes.csv', encoding='latin-1')
@@ -25,35 +22,46 @@ df_w1_notes=pd.read_csv('w1_notes.csv', encoding='latin-1')
 #df_w1_notes.columns
 df_clean=df_w1_notes[['participantID', 'w1scan_scannotes']]
 
+df_clean.set_index("participantID", inplace=True)
+df_clean.index = df_clean.index.str.lower()
+df_clean = df_clean.drop(['participant id (bbx_###)'])
 
 # Step 1: Given an expected range (i.e 1-50), list DICOM subjects not found in that range.
-excluded_subjects = []
+
+# Get DICOM id list
 s1_dcms = [x.split("/")[-1].split("-")[1].lstrip("0") for x in
              glob.glob(os.path.join(bids_path, "sourcedata/DICOM/ses-1/sub-*"))]
-s2_dcms = [x.split("/")[-1].split("-")[1].lstrip("0") for x in
-             glob.glob(os.path.join(bids_path, "sourcedata/DICOM/ses-2/sub-*"))]
+s1_dcms = np.unique(np.array(s1_dcms)).tolist()
+# get expected id list from notes
+s1_sub_ids = sorted([x.split("_")[1].lstrip('0') for x in df_clean.index.values])
+s1_sub_ids = np.unique(np.array(s1_sub_ids)).tolist()
 
-s1_mia = np.setdiff1d(expected_sub_lst,s1_dcms)
-s2_mia = np.setdiff1d(expected_sub_lst,s2_dcms)
-s1_mia= s1_mia.tolist()
-s2_mia= s2_mia.tolist()
+# get total count for DICOM and expected id lists
+s1_sub_exp_ct = len(s1_sub_ids)
+s1_sub_dcm_ct = len(s1_dcms)
 
-## loop through missing ids and see if any notes are found, add to drop list of not found.
-s1_drop_list = []
-s2_drop_list = []
+# return the unique values in ar1 that are not in ar2
+# ids found in dicom directory but not id list
+s1_mia_id = np.setdiff1d(s1_dcms, s1_sub_ids)
 
-for id_ in s1_mia:
-    bbx_id = "bbx_{:03d}".format(id_)
-    if df_clean.loc[df_clean['participantID'] == bbx_id].empty:
-        print("Subject, {}, has no scan notes available, inferring then the scan did not take place, and subject is dropped.".format(bbx_id))
+# ids missing from dicom directories
+s1_mia_dcm = np.setdiff1d(s1_sub_id_lst, s1_dcms)
 
-        s1_mia.remove(id_)
-    else:
-        print("Subject, {}, notes: \n{}".format(bbx_id, df_clean.loc[df_clean['participantID'] == bbx_id]))
+s1_mia_id = s1_mia_id.tolist()
+s1_mia_dcm = s1_mia_dcm.tolist()
 
+# look at scan notes for any missing DICOM ids
+for id_ in s1_mia_dcm:
+    bbx_id = "bbx_{:03d}".format(int(id_))
+    try:
+        print("{}, notes: \n{}".format(bbx_id, df_clean.loc[bbx_id]))
+    except:
+        print("Missing scan notes for ", bbx_id)
 
+## Report Output
+print("\nExpected subject count: {} \tUnique DICOM directories found: {}".format(s1_sub_exp_ct, s1_sub_dcm_ct))
+print("\nMissing DICOM directories for IDs: {} \n\nMissing scan note IDs, but found DICOM directories: {} \n".format(s1_mia_dcm, s1_mia_id))
 
-print("> MISSING DICOMS: \nS1: {} \t\tS2: {} \nS1 MISSING SUBJECTS: {} \nS2 MISSING SUBJECTS: {} ".format(len(s1_mia), len(s2_mia), s1_mia, s2_mia))
 
 
 
