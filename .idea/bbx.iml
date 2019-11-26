@@ -6,6 +6,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="bro" />
     <orderEntry type="module" module-name="tensorflow-tutorial_01" />
+    <orderEntry type="module" module-name="NIBL" />
   </component>
   <component name="TestRunnerService">
     <option name="PROJECT_TEST_RUNNER" value="Unittests" />
