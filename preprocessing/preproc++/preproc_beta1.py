@@ -203,7 +203,7 @@ def skull_strip(args, ses_id, sub_list):
                     print("Running bet on ", nifti)
                     bet_cmd=("bet %s %s -F -m -f %s"%(nifti, bet_output, args.BET))
                     print(">>>-----> BET COMMAND:", bet_cmd)
-                    #os.system(bet_cmd)
+                    os.system(bet_cmd)
         except FileNotFoundError:
             pass
 
