@@ -7,6 +7,7 @@
     <orderEntry type="module" module-name="bro" />
     <orderEntry type="module" module-name="tensorflow-tutorial_01" />
     <orderEntry type="module" module-name="NIBL" />
+    <orderEntry type="module" module-name="fmri_qc" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="renderExternalDocumentation" value="true" />

@@ -29,7 +29,7 @@ def make_file(sub,main_dict):
             else:
                 # case - session, runs available
                 for run in main_dict[sub]:
-                    outpath = os.path.join(args.DERIVDIR, sub, 'func', 'Analysis', "feat1")
+                    outpath = os.path.join(args.DERIVDIR, sub, 'ses-1/func', 'Analysis', "feat1")
                     if not os.path.exists(outpath):
                         os.makedirs(outpath)
 
@@ -127,7 +127,7 @@ def fill_dict(sub, main_dict):
 
                 # case 1: if flag false, grab all available runs found
                 if arglist["RUNS"] == False:
-                    funcs_found = glob.glob(os.path.join(deriv_path, sub, 'func',
+                    funcs_found = glob.glob(os.path.join(deriv_path, sub, 'ses-1/func',
                                                  "%s_ses-%s_task-%s_run-*preproc*brain.nii.gz" % (sub, sess_id, task)))
                     runs=[x.split("/")[-1].split("_")[3].split("-")[1] for x in funcs_found]
                     for run in runs:
@@ -137,8 +137,8 @@ def fill_dict(sub, main_dict):
                     for func in funcs_found:
                         x = int(run)
                         run=func.split("/")[-1].split("_")[3].split("-")[1]
-                        output_path=os.path.join(sub_path, 'func', 'Analysis', 'feat1', 'ses-%s_task-%s_run-%s' % (sess_id, task, run))
-                        confound = os.path.join(deriv_path, sub, 'func', 'motion_assessment',
+                        output_path=os.path.join(sub_path, 'ses-1/func', 'Analysis', 'feat1', 'ses-%s_task-%s_run-%s' % (sess_id, task, run))
+                        confound = os.path.join(deriv_path, sub, 'ses-1/func', 'motion_assessment',
                                          '%s_ses-%s_task-%s_run-%s_space-MNI152NLin2009cAsym_desc-preproc_confound.txt' % (sub, sess_id, task, run))
 
                         # fill dictionary
@@ -160,7 +160,7 @@ def fill_dict(sub, main_dict):
                         main_dict[sub][run]['TR'] = trs
 
                         for i in range(6):
-                            motcor = os.path.join(sub_path, 'func', 'motion_assessment', 'motion_parameters',
+                            motcor = os.path.join(sub_path, 'ses-1/func', 'motion_assessment', 'motion_parameters',
                                               '%s_ses-%s_task-%s_run-%s_moco%s.txt' % (sub, sess_id, task, run, i))
                             main_dict[sub][run]['moco%i' % i] = motcor
 
@@ -171,7 +171,7 @@ def fill_dict(sub, main_dict):
                             # print(item)
                             ctr = ctr + 1
 
-                            ev = os.path.join(sub_path, 'func', 'onsets',
+                            ev = os.path.join(sub_path, 'ses-1/func', 'onsets',
                                                   '%s_task-%s_run-%s.txt' % (sub, ev_name, run))
                             #print(ev)
                             # print("EV: ", ev)
