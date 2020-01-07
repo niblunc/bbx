@@ -30,7 +30,7 @@ set fmri(featwatcher_yn) 0
 set fmri(sscleanup_yn) 0
 
 # Output directory
-set fmri(outputdir) "OUTPUT"
+set fmri(outputdir) "/projects/niblab/bids_projects/Experiments/bbx/bids/derivatives/sub-001/ses-1/func/Analysis/feat2/sub-001_fsl"
 
 # TR(s)
 set fmri(tr) 3
@@ -329,16 +329,16 @@ set fmri(copeinput.19) 1
 set fmri(copeinput.20) 1
 
 # 4D AVW data or FEAT directory (1)
-set feat_files(1) "FEAT1"
+set feat_files(1) "/projects/niblab/bids_projects/Experiments/bbx/bids/derivatives/sub-001/ses-1/func/Analysis/feat1/training_run-1_fsl.feat"
 
 # 4D AVW data or FEAT directory (2)
-set feat_files(2) "FEAT2"
+set feat_files(2) "/projects/niblab/bids_projects/Experiments/bbx/bids/derivatives/sub-001/ses-1/func/Analysis/feat1/training_run-2_fsl.feat"
 
 # 4D AVW data or FEAT directory (3)
-set feat_files(3) "FEAT3"
+set feat_files(3) "/projects/niblab/bids_projects/Experiments/bbx/bids/derivatives/sub-001/ses-1/func/Analysis/feat1/training_run-3_fsl.feat"
 
 # 4D AVW data or FEAT directory (4)
-set feat_files(4) "FEAT4"
+set feat_files(4) "/projects/niblab/bids_projects/Experiments/bbx/bids/derivatives/sub-001/ses-1/func/Analysis/feat1/training_run-4_fsl.feat"
 
 # Add confound EVs text file
 set fmri(confoundevs) 0
