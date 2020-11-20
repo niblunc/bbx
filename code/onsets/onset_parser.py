@@ -13,7 +13,7 @@ import glob
 handles = []
 
 ## Change this path to match where you have the onset files
-basepath = '/Users/jennygilbert/Desktop/bbx_log_copies_october28_2019'
+basepath = '/Users/nikkibytes/Documents/local_dev/bbx/log_files'
 os.chdir(basepath)
 
 ignore = ['DATA 	Keypress: o', 'Level post injecting via pump at address']
@@ -33,9 +33,9 @@ for file in glob.glob(os.path.join(basepath, '*.log')):
     # print(file)
 
     # This will change dependign on the path -- rememeber to count starting at 0 before the first '/'
-    sub = file.split('/')[5].split('_')[1]
-    run = file.split('/')[5].split('_')[2]
-    wave = file.split('/')[5].split('_')[3]
+    sub = file.split('/')[-1].split('_')[1]
+    run = file.split('/')[-1].split('_')[2]
+    wave = file.split('/')[-1].split('_')[3]
     print([sub, run, wave])
 
     #   open the script and read in log data
@@ -129,7 +129,7 @@ for file in glob.glob(os.path.join(basepath, '*.log')):
         mydict = {}
         try:
             for files in files2make:
-                path = '/Users/jennygilbert/Desktop/bbx_log_copies_october28_2019/onsets_for_fsl/%s_%s_%s_%s.txt' % (
+                path = '/Users/nikkibytes/Documents/local_dev/bbx/output_onsets/%s_%s_%s_%s.txt' % (
                 sub, run, wave, files)
                 if os.path.exists(path) == True:
                     print('exists')

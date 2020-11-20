@@ -33,13 +33,13 @@ class OnsetSetup():
             #print(sub_id, run, ses)
 
 
-            df=pd.read_csv(file, sep="\t", header=None)
-            df.columns =["time", "string1", "string2"]
+            logf_df=pd.read_csv(file, sep="\t", header=None)
+            logf_df.columns =["time", "data", "keypress"]
 
-            # find start time rows
+            # Set Start time dataframes
             #print("[INFO] querying start time....")
-            st_query=df.query('string1 in "Level start key press "')
-            #display(st_query)
+            st_query=df[df['string1'].str.contains('Level start key press')]
+            display(st_query)
             start_time=int(st_query['time'])
 
             # SSB: cue and taste query
@@ -71,7 +71,7 @@ class OnsetSetup():
             usb_cue_query = df[(df["string1"].str.contains("image=UCO.jpg")) | (df["string1"].str.contains("image=USL.jpg"))]
             usb_cue_query = usb_cue_query.drop(["string1", "string2"], axis=1)
             # add stim time and mod column
-            usb_cue_query["stim"] = 6
+            usb_cue_query["stim"] = 1
             usb_cue_query["mod"] = 1
             # subtract start time
             usb_cue_query.time = usb_cue_query.time - start_time
