@@ -1,6 +1,5 @@
 # Code for BBX  
 
-[Notebooks]() : walkthrough code notebooks.
-        - preprocessing pipeline
-        - 
+[Notebooks]() : walkthrough code notebooks.  
+
 [Scripts]() : scripts, modules, batch jobs and other code files. 
