@@ -1,0 +1,54 @@
+fMRI Scan Error Notes:
+
+
+
+    fMRIPREP Scan Errors:
+
+        ERROR #1:
+        `IndexError: cannot do a non-empty take from an empty axes.`
+
+        Solutions:
+        This is may be fixed with an fmriprep version update: https://github.com/nipreps/fmriprep/issues/1785
+
+            Subjects with error -> session-2: 16, 20, 24, 25, 52, 59, 74, 77, 87
+
+
+        ERROR #2:
+        `nilearn.image.resampling.BoundingBoxError: The field of view given by the target affine does not contain any of the data`
+
+            Subjects with error -> session-2: 108
+
+
+        ERROR #3: 
+        Node Name: `fmriprep_wf.single_subject_035_wf.anat_preproc_wf.anat_template_wf.t1_mergeMultiRegistration::loadMovables: voxel size is different /base_dir/experiments/bbx/data/fmriprepp/fmriprep_wf/fmriprep_wf/single_subject_035_wf/anat_preproc_wf/anat_template_wf/n4_correct/mapflow/_n4_correct1/sub-035_ses-2_T1w_corrected.nii.gz`
+
+        Solutions:
+        Maybe it is getting hung up on pre-exisiting error run? Delete files/folders related to subject, re-run: 
+        Some people also updating with success. https://github.com/nipreps/fmriprep/issues/1199
+
+            Subjects with error -> session-2: 35
+
+
+
+
+    fMRI Feat 1 Errors
+
+        Suggested Trouble shooting steps: 
+        * Check Onsets
+        * Check input variables in the fsf files
+        * Check design model and evs
+
+        Session 1:
+            sub-002, run-4: missing "pre" run-4 onset logfile, will move forward as a 3 run subject in feat2 
+            sub-004  run-3: missing "pre" run-3 onset logfile, will move forward as a 3 run subject in feat2 
+            sub-079  run-3: missing "pre" run-3 onset logfile, will move forward as a 3 run subject in feat2 
+            sub-091  (run-2-run-4): need to make files.
+            sub-117 run-1: missing "pre" run-1 onset logfile, unlabeled session file available
+
+
+
+        Removed Scans Final Notes:
+        
+
+    REMOVED FROM SESSION-2:
+        Subjects removed before session-2 scan -> 147, 150  

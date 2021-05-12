@@ -1,0 +1,36 @@
+sub-031_run-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found- 89 
+sub-070_run-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found- 143 
+sub-070_run-2 Failed FD motion spike check, with a threshold of 0.5 , spikes found- 69 
+sub-127_run-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found- 83 
+sub-127_run-2 Failed FD motion spike check, with a threshold of 0.5 , spikes found- 74 
+sub-127_run-3 Failed FD motion spike check, with a threshold of 0.5 , spikes found- 96 
+sub-127_run-4 Failed FD motion spike check, with a threshold of 0.5 , spikes found- 83 
+sub-133_run-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found- 70 
+sub-149_run-3 Failed FD motion spike check, with a threshold of 0.5 , spikes found- 68 
+sub-031_run-1 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 89 
+sub-070_run-1 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 143 
+sub-070_run-2 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 69 
+sub-127_run-1 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 83 
+sub-127_run-2 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 74 
+sub-127_run-3 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 96 
+sub-127_run-4 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 83 
+sub-133_run-1 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 70 
+sub-149_run-3 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 68 
+sub-031_run-1 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 89 
+sub-070_run-1 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 143 
+sub-070_run-2 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 69 
+sub-127_run-1 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 83 
+sub-127_run-2 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 74 
+sub-127_run-3 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 96 
+sub-127_run-4 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 83 
+sub-133_run-1 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 70 
+sub-149_run-3 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 68 
+sub-031_run-1 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 89 
+sub-070_run-1 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 143 
+sub-070_run-2 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 69 
+sub-127_run-1 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 83 
+sub-127_run-2 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 74 
+sub-127_run-3 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 96 
+sub-127_run-4 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 83 
+sub-133_run-1 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 70 
+sub-149_run-3 ses-1 Failed FD motion spike check, with a threshold of 0.5 , spikes found - 68 
